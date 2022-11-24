@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import OrderRow from './OrderRow';
 
@@ -9,7 +10,7 @@ const Orders = () => {
   const [orders,setOrders]=useState([]);
 
    useEffect(()=>{
-     fetch(`http://localhost:5000/orders?email=${user?.email}`)
+     fetch(`https://genius-car-server-nine-smoky.vercel.app/orders?email=${user?.email}`)
       .then(res=>res.json())
       .then(data=>setOrders(data))
    },[user?.email])
@@ -18,7 +19,7 @@ const Orders = () => {
   const handleDelete=id=>{
     const proceed=window.confirm('Are You sure to delete this Item');
    if(proceed){
-     fetch(`http://localhost:5000/orders/${id}`, {
+     fetch(`https://genius-car-server-nine-smoky.vercel.app/orders/${id}`, {
        method:'DELETE'
      })
      .then(res=>res.json())
@@ -34,7 +35,7 @@ const Orders = () => {
 }
 
 const handleStatusUpdate=id=>{
-    fetch(`http://localhost:5000/orders/${id}`,{
+    fetch(`https://genius-car-server-nine-smoky.vercel.app/orders/${id}`,{
          method:'PATCH',
          headers: {
             'content-type':'application/json'
@@ -58,16 +59,26 @@ const handleStatusUpdate=id=>{
 
     return (
         <div>
-            <h2 className="text-5xl">You have {orders.length} Orders</h2>
-            <div className="overflow-x-auto w-full">
+           
+           
+            
+                {orders?.length ?//orders er moddhe jodi length  thake thle eita dekhabo ar na hle 
+                    <>
+                       <h2 className="text-4xl mb-3">You have {orders.length} Orders.</h2>
+                    </>
+                    :
+                    <h3 className='text-3xl mb-4'>Oopps! You have No Orders Yet.Please Order from Home Page's <Link to='/'><u className='font-bold text-pink-500'>Services</u></Link> Area. </h3>
+                }
+           
+            <div className="overflow-x-auto w-full"> 
                 <table className="table w-full">
                     <thead>
                         <tr>
                             <th>
                             </th>
                             <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>Service Name</th>
+                            <th>Service Charge</th>
                             <th></th>
                         </tr>
                     </thead>

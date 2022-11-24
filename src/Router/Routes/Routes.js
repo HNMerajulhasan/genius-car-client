@@ -1,4 +1,5 @@
 import Main from "../../Layout/Main";
+import Blog from "../../Pages/Blog/Blog";
 import Checkout from "../../Pages/Checkout/Checkout";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -28,11 +29,15 @@ const router=createBrowserRouter([
         {
           path:'/checkout/:id',
           element:<Checkout></Checkout>,
-          loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)
+          loader:({params})=>fetch(`https://genius-car-server-nine-smoky.vercel.app/services/${params.id}`)
         },
         {
           path:'/orders',
           element:<Orders></Orders>
+        },
+        {
+          path:'/blog',
+          element:<Blog></Blog>
         }
     ]
   }

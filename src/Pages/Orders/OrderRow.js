@@ -39,10 +39,8 @@ const OrderRow = ({order,handleDelete,handleStatusUpdate}) => {
         </td>
         <td>
           {serviceName}
-          <br/>
-          <span className="badge badge-ghost badge-sm">${price}</span>
         </td>
-        <td>Purple</td>
+        <td>${price}</td>
         <th>
           <button
            onClick={()=>handleStatusUpdate(_id)}

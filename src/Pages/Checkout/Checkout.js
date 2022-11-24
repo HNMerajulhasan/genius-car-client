@@ -1,11 +1,14 @@
 import React from 'react';
 import { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Checkout = () => {
   const {_id,title,price}  = useLoaderData();
   const {user}=useContext(AuthContext);
+  const navigate = useNavigate()
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/orders'
 
   const handlePlaceOrder=event=>{
     event.preventDefault();
@@ -27,7 +30,7 @@ const Checkout = () => {
     }
 
    //server side a create kra order API ta ke amra ekhane akhn fetch kre anbo.Ar jehetu eita ekta create operation tai ekhane method hbe POST.It means user er order kra data ke amra backend a send kre dibo.
-   fetch('http://localhost:5000/orders', {
+   fetch('https://genius-car-server-nine-smoky.vercel.app/orders', {
       method:'POST',
       headers:{
         'content-type': 'application/json'
@@ -40,6 +43,7 @@ const Checkout = () => {
        if(data.acknowledged){
          alert('Order Placed Successfully')
          form.reset();
+         navigate(from, { replace: true })
        }
     })
     .catch(err=>console.error(err));

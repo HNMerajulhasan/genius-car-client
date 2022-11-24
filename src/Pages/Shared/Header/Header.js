@@ -46,7 +46,7 @@ const handleLogOut = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <button className="btn btn-warning">Appoinmenet</button>
+                <Link to='/blog' className="btn btn-warning">Blog</Link>
             </div>
         </div>
     );
