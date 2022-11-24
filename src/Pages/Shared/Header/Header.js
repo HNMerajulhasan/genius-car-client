@@ -5,16 +5,23 @@ import headerLogo from '../../../assets/logo.svg';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const Header = () => {
-const {user}=useContext(AuthContext);
+const {user,logOut}=useContext(AuthContext);
+
+const handleLogOut = () => {
+    logOut()
+        .then(() => { })
+        .catch(error => console.error(error))
+}
 
  const menuItem=<>
-   <li className='font-semibold'><Link to="/">Home</Link></li>
+   <li className='font-bold text-purple-600'><Link to="/">Home</Link></li>
    { user?.email ?//user er moddhe jodi email address thake thle eita dekhabo ar na hle 
       <>
-        <li className='font-semibold'><Link to="/orders">Orders</Link></li>
+        <li className='font-bold text-purple-600'><Link to="/orders">Orders</Link></li>
+        <li className='font-bold text-purple-600' ><Link onClick={handleLogOut}>LogOut</Link></li>
       </>
      :
-     <li className='font-semibold'><Link to="/login">Login</Link></li>
+     <li className='font-bold text-purple-600'><Link to="/login">Login</Link></li>
     }
  </>
 

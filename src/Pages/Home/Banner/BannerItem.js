@@ -16,7 +16,7 @@ const {image,id,prev,next} =slide;
                    </h1>
                 </div>
                 <div className="absolute flex justify-end transform -translate-y-1/2 left-24 w-2/5 top-1/2 mt-3">
-                  <p className='text-white text-xl'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint atque magni laudantium.</p>
+                  <p className='text-white text-xl'>Here, We are Provide you to best car reapir service.We always try to ensure Supreme Services to our customer</p>
                 </div>
                 <div className="absolute flex justify-start transform -translate-y-1/2 left-24 w-2/5 top-3/4">
                    <button className="btn btn-active btn-secondary mr-5 px-7">Button</button>

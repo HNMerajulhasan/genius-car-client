@@ -50,16 +50,16 @@ const Checkout = () => {
         <div>
            <form onSubmit={handlePlaceOrder}>
             <h2 className='text-4xl'>You are about to Order: {title}</h2>
-            <h4 className="text-3xl">Service Charge: $ {price}</h4>
-              <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
+            <h4 className="text-3xl text-cyan-500 mt-4">Service Charge: $ {price}</h4>
+              <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mt-3'>
                 <input name="firstName" type="text" placeholder="First Name" className="input input-ghost w-full input-bordered" />
                 <input name="lastName" type="text" placeholder="Last Name" className="input input-ghost w-full input-bordered" />
                 <input name="phone" type="text" placeholder="Your Phone" className="input input-ghost w-full input-bordered" required/>
                 <input name="email" type="text" placeholder="Your email" defaultValue={user?.email} className="input input-ghost w-full input-bordered" readOnly />
              </div> 
-             <textarea name="message" className="textarea textarea-bordered h-24 w-full" placeholder="Your message for this Service" required></textarea>
+             <textarea name="message" className="textarea textarea-bordered h-24 w-full mt-4" placeholder="Your message for this Service" required></textarea>
 
-             <input className='btn' type="submit" value="Place Your Order."></input>
+             <input className='btn mb-3 mt-3' type="submit" value="Place Your Order."></input>
            </form>
         </div>
     );
